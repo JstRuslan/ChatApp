@@ -1,6 +1,7 @@
-package gb.lesson4.chatapp;
+package gb.lesson4.chatapp.controllers;
 
 
+import gb.lesson4.chatapp.models.Network;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -24,14 +25,14 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class ChatAppController {
-    String strDate = new SimpleDateFormat("dd.MM.yy hh:mm:ss").format(new Date());
+    String strDate = new SimpleDateFormat("hh:mm:ss").format(new Date());
     private final ObservableList<String> listUser = FXCollections.observableArrayList("Oleg", "Marfa", "TommyLee", "Nina");
 
     @FXML
     private Button btnSend;
 
     @FXML
-    private Button clearChat;
+    private Button btnClearChat;
 
     @FXML
     private TextArea fieldChat;
@@ -42,12 +43,12 @@ public class ChatAppController {
     @FXML
     private ListView<String> listViewUsers;
 
-    public void setListViewUsers() {
-        listViewUsers.getItems().addAll(listUser);
-    }
-
     @FXML
     private MenuItem menuItemClose;
+
+    public void initialize() {
+        listViewUsers.getItems().addAll(listUser);
+    }
 
     @FXML
     void closeApp(ActionEvent event) {
@@ -66,14 +67,21 @@ public class ChatAppController {
 
     }
 
+    private Network network;
+
+    public void setNetwork(Network network) {
+        this.network = network;
+    }
 
     @FXML
     void sendMsg(ActionEvent event) throws IOException {
         String msg = fieldMsg.getText().trim();
-        if (msg.length() != 0) {
-            fieldChat.appendText(">" + strDate + "\n" + msg + "\n");
-            fieldMsg.clear();
+        fieldMsg.clear();
+        if (msg.isEmpty()) {
+            return;
         }
+        network.sendMsg(msg);
+        appendMsg(msg);
 
     }
 
@@ -81,15 +89,24 @@ public class ChatAppController {
     void pressEnter(KeyEvent event) {
         String msg = fieldMsg.getText().trim();
 
-        if ((event.getCode() == KeyCode.ENTER) && (msg.length() != 0)) {
-            fieldChat.appendText(">>>" + strDate + "\n" + msg + "\n");
+        if ((event.getCode() == KeyCode.ENTER) && (!msg.isEmpty())) {
             fieldMsg.clear();
+            network.sendMsg(msg);
+            appendMsg(msg);
         }
     }
 
     @FXML
-    void clearFiledChat(ActionEvent event) {
+    void clearFieldChat(ActionEvent event) {
         fieldChat.clear();
     }
+
+    public void appendMsg(String msg) {
+        fieldChat.appendText(">" + strDate + "<");
+        fieldChat.appendText(System.lineSeparator());
+        fieldChat.appendText(msg);
+        fieldChat.appendText(System.lineSeparator());
+    }
+
 
 }

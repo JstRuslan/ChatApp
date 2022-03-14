@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gb.lesson4.chatapp.ChatAppController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gb.lesson4.chatapp.controllers.ChatAppController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -74,7 +74,7 @@
                      <children>
                         <FlowPane layoutX="59.0" layoutY="-89.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Button fx:id="clearChat" mnemonicParsing="false" onAction="#clearFiledChat" text="Clear" />
+                              <Button fx:id="btnClearChat" mnemonicParsing="false" onAction="#clearFieldChat" text="Clear" />
                            </children>
                         </FlowPane>
                      </children>

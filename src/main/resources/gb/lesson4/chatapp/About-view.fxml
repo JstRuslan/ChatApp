@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gb.lesson4.chatapp.ChatAppController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gb.lesson4.chatapp.controllers.ChatAppController">
    <top>
       <Label alignment="CENTER" prefHeight="29.0" prefWidth="250.0" text="ChatApp v.1.0" textAlignment="CENTER" textFill="#a80c0c" BorderPane.alignment="CENTER">
          <font>
