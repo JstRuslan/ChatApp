@@ -14,6 +14,9 @@ import java.net.Socket;
 
 public class ChatApp extends Application {
 
+    private Network network;
+    private ChatAppController chatAppController;
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ChatApp.class.getResource("ChatApp-view.fxml"));
@@ -22,13 +25,13 @@ public class ChatApp extends Application {
         stage.setResizable(false);
         stage.setScene(scene);
 
-        Network network = new Network();
-        ChatAppController chatAppController = fxmlLoader.getController();
+        network = new Network();
+        chatAppController = fxmlLoader.getController();
 
         chatAppController.setNetwork(network);
 
-        network.connect();
-        network.waitMsg(chatAppController);
+        network.connect(chatAppController);
+        //network.waitMsg(chatAppController);
 
         stage.show();
     }

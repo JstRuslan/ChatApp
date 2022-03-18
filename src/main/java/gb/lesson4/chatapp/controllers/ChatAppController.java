@@ -48,6 +48,7 @@ public class ChatAppController {
 
     public void initialize() {
         listViewUsers.getItems().addAll(listUser);
+        Network network;
     }
 
     @FXML
@@ -101,7 +102,7 @@ public class ChatAppController {
         fieldChat.clear();
     }
 
-    public void appendMsg(String msg) {
+    public synchronized void appendMsg(String msg) {
         fieldChat.appendText(">" + strDate + "<");
         fieldChat.appendText(System.lineSeparator());
         fieldChat.appendText(msg);

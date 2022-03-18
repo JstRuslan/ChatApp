@@ -15,7 +15,8 @@ public class Network {
 
     private final String host;
     private final int port;
-    private Socket mySocket;
+    private Socket socket;
+    private ChatAppController appController;
 
 
     public Network() {
@@ -28,23 +29,24 @@ public class Network {
         this.port = port;
     }
 
-    public void connect() {
+    public void connect(ChatAppController ChatAppController) {
+        appController = ChatAppController;
         Thread tConnect = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    Socket socket = new Socket(host, port);
+                    socket = new Socket(host, port);
                     in = new DataInputStream(socket.getInputStream());
                     out = new DataOutputStream(socket.getOutputStream());
 
-                    mySocket = getSocket(socket);
+                    waitMsg(appController);
                 }
                 catch (IOException e) {
                     e.printStackTrace();
                     System.out.println("Connection is absent");
                 }
             }
-        }, "Client connect");
+        });
         tConnect.setDaemon(true);
         tConnect.start();
     }
@@ -62,29 +64,18 @@ public class Network {
 
 
     public void waitMsg(ChatAppController chatAppController) {
-        Thread t = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    while (true) {
-                        if (mySocket == null) {
-                            continue;
-                        }
-                        String msg = in.readUTF();
-                        chatAppController.appendMsg(msg);
-                    }
+        try {
+            while (true) {
+                if (socket == null) {
+                    continue;
                 }
-                catch (IOException e) {
-                    e.printStackTrace();
-                }
+                String msg = in.readUTF();
+                chatAppController.appendMsg(msg);
             }
-        }, "Wait Msg");
-        t.setDaemon(true);
-        t.start();
-
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    private Socket getSocket(Socket socket) {
-        return socket;
-    }
 }
