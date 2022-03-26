@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gb.lesson4.chatapp.controllers.ChatAppController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem fx:id="menuItemClearChat" mnemonicParsing="false" onAction="#clearFieldChat" text="Clear Chat" />
+              <MenuItem fx:id="menuItemClose" mnemonicParsing="false" onAction="#closeApp" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Users">
+            <items>
+                  <MenuItem mnemonicParsing="false" text="Add user" />
+              <MenuItem mnemonicParsing="false" text="Delete user" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem fx:id="menuItemAbout" mnemonicParsing="false" onAction="#aboutInfo" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <bottom>
+      <SplitPane dividerPositions="0.9083557951482479" orientation="VERTICAL" prefHeight="35.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="34.0" prefWidth="598.0">
+               <children>
+                  <SplitPane dividerPositions="0.7667785234899329" prefHeight="25.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="25.0" prefWidth="395.0">
+                           <children>
+                              <TextField fx:id="fieldMsg" layoutX="37.0" layoutY="1.0" onKeyPressed="#pressEnter" promptText="Enter a msg..." AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <font>
+                                    <Font size="12.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="25.0" prefWidth="193.0">
+                           <children>
+                              <Button fx:id="btnSend" layoutX="13.0" layoutY="1.0" mnemonicParsing="false" onAction="#sendMsg" text="SEND" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
+        </items>
+      </SplitPane>
+   </bottom>
+   <right>
+      <BorderPane prefHeight="338.0" prefWidth="430.0" BorderPane.alignment="CENTER">
+         <center>
+            <SplitPane dividerPositions="0.11011904761904762" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" BorderPane.alignment="CENTER">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                     <children>
+                        <Label layoutX="19.0" layoutY="7.0" prefHeight="34.0" prefWidth="73.0" text="Chat" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="325.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="System Italic" size="20.0" />
+                           </font>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="labelNickname" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="280.0" layoutY="9.0" prefHeight="34.0" prefWidth="118.0" text="NickName" textAlignment="RIGHT" textFill="#940505" underline="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="301.0" prefWidth="354.0">
+                     <children>
+                        <TextArea fx:id="fieldChat" editable="false" layoutX="-38.0" pickOnBounds="false" prefHeight="309.0" prefWidth="466.0" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font size="10.0" />
+                           </font></TextArea>
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+         </center>
+      </BorderPane>
+   </right>
+   <left>
+      <ListView fx:id="listViewUsers" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="TOP_LEFT" />
+   </left>
+</BorderPane>
