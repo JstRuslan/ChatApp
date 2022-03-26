@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -10,7 +12,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gb.lesson4.chatapp.controllers.ChatAppController">
@@ -19,6 +20,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
+                  <MenuItem fx:id="menuItemClearChat" mnemonicParsing="false" onAction="#clearFieldChat" text="Clear Chat" />
               <MenuItem fx:id="menuItemClose" mnemonicParsing="false" onAction="#closeApp" text="Close" />
             </items>
           </Menu>
@@ -68,15 +70,26 @@
    <right>
       <BorderPane prefHeight="338.0" prefWidth="430.0" BorderPane.alignment="CENTER">
          <center>
-            <SplitPane dividerPositions="0.07142857142857142" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" BorderPane.alignment="CENTER">
+            <SplitPane dividerPositions="0.11011904761904762" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" BorderPane.alignment="CENTER">
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                      <children>
-                        <FlowPane layoutX="59.0" layoutY="-89.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <Button fx:id="btnClearChat" mnemonicParsing="false" onAction="#clearFieldChat" text="Clear" />
-                           </children>
-                        </FlowPane>
+                        <Label layoutX="19.0" layoutY="7.0" prefHeight="34.0" prefWidth="73.0" text="Chat" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="325.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="System Italic" size="20.0" />
+                           </font>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="labelNickname" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="280.0" layoutY="9.0" prefHeight="34.0" prefWidth="118.0" text="NickName" textAlignment="RIGHT" textFill="#940505" underline="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
                      </children>
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="301.0" prefWidth="354.0">

@@ -7,11 +7,11 @@ import java.util.List;
 public class BaseAuthentication implements AuthenticationService {
 
     private static final List<User> clients = List.of(
-            new User("martin", "1111", "Martin_Cat"),
-            new User("batman", "2222", "Брюс_Уэйн"),
-            new User("gena", "3333", "Гендальф_Серый")
+            new User("user1", "1111", "Mike"),
+            new User("user2", "2222", "Merry"),
+            new User("user3", "3333", "Tommy"),
+            new User("user4", "4444", "Jane")
     );
-
     @Override
     public synchronized String getUsernameByLoginAndPassword(String login, String password) {
         for (User client : clients) {
